@@ -6,12 +6,14 @@ export default function Profile({ token, onLogout }) {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const API_URL = import.meta.env.VITE_API_BASE_URL;
+
   useEffect(() => {
     const fetchProfile = async () => {
       setLoading(true);
 
       try {
-        const response = await fetch("http://localhost:3042/profile", {
+        const response = await fetch(`${API_URL}/profile`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
